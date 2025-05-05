@@ -63,42 +63,60 @@ The **Planning‑then‑Execution** pattern governs task routing and synchroniza
 
 ### Prerequisites
 
-* Python 3.10+ and `pip`
-* Kaggle account & API token (`~/.kaggle/kaggle.json`)
+* **Python 3.10+** and `pip`
+* Kaggle API token (`~/.kaggle/kaggle.json`)
+* XMPP server credentials for each agent (e.g., `researcher@xmpp.example.com`)
 * Google account (for Colab)
 
-### Quick Start (Colab)
-
-1. **Clone the repo & open the notebook**
-
-   ```bash
-   git clone https://github.com/<your‑org>/multi‑agent‑collaboration.git
-   ```
-2. Launch `Multi_Agent_Collaboration.ipynb` in Google Colab.
-3. **Install requirements** inside Colab:
-
-   ```python
-   !pip install -r requirements.txt
-   ```
-4. **Load your Kaggle token**:
-
-   ```python
-   import os, json, zipfile, pathlib, shutil
-   # upload kaggle.json via Colab UI, then run:
-   !mkdir -p ~/.kaggle && mv kaggle.json ~/.kaggle/ && chmod 600 ~/.kaggle/kaggle.json
-   ```
-5. **Run the notebook cells** to start individual agents and the coordinator.
-
-### Local Execution
+Required Python packages (installed automatically in the notebook):
 
 ```bash
-pip install -r requirements.txt
-python agents/launch_all.py  # spawns all four agents
+pip install spade requests spacy pandas nltk
 ```
 
-Logs appear in `logs/`.
+### Option A – Interactive Notebook Demo
 
-## Project Roadmap
+The repository includes **`Multi_Agent_Collaboration.ipynb`**, a ready‑to‑run Colab notebook that demonstrates the full agent workflow.
+
+1. Open the notebook in **Google Colab** or any Jupyter environment.
+2. **Insert valid XMPP credentials** where indicated:
+
+   ```python
+   # ⚠️ Replace with your actual JID & password
+   researcher_jid = "researcher@xmpp.example.com"
+   researcher_pw  = "strong‑password"
+   critic_jid     = "critic@xmpp.example.com"
+   ...
+   ```
+3. Execute all cells sequentially:
+
+   * **Cell 1** installs SPADE: `!pip install spade`.
+   * **Cells 2–5** define `ResearcherAgent`, `CriticAgent`, `EditorAgent`, and `CoordinatorAgent`.
+   * The final cell instantiates and starts each agent; sample console output:
+
+     ```text
+     ResearcherAgent started ✅
+     Researching...
+     CriticAgent received: synthesized findings
+     EditorAgent polishing draft...
+     CoordinatorAgent ▶ Task complete.
+     ```
+4. Use `agent.stop()` or interrupt the kernel to terminate all agents.
+
+### Option B – Local Execution (CLI)
+
+```bash
+git clone https://github.com/<your‑org>/multi‑agent‑collaboration.git
+cd multi‑agent‑collaboration
+pip install -r requirements.txt
+python agents/launch_all.py  # spawns all agents
+```
+
+Logs are saved to `logs/` by default.
+
+---
+
+## Project Roadmap Roadmap
 
 | Phase                       | Dates           | Milestones                                  |
 | --------------------------- | --------------- | ------------------------------------------- |
