@@ -1,139 +1,125 @@
 # Project Proposal: Multi-Agent Collaborative System (MACS)
 
-**1. Project Title:** Multi-Agent Collaborative System (MACS)
+## 1. Project Title  
+**Multi-Agent Collaborative System (MACS)**
 
-**2. Team Information:** Team: Group 1 (AI Dreamers)
-* Win Aung
-* Troy Frost
-* Hisham Macaraya
-* Soriel Martinez
+## 2. Team Information  
+**Team:** Group 1 (AI Dreamers)  
+- Win Aung  
+- Troy Frost  
+- Hisham Macaraya  
+- Soriel Martinez  
 
-**3. Course Information:** Course: ITAI 2376 – Deep Learning in Artificial Intelligence  
-Term: Spring 2025  
-Professor: Dr. Lina Awodogan
+## 3. Course Information  
+- **Course:** ITAI 2376 – Deep Learning in Artificial Intelligence  
+- **Term:** Spring 2025  
+- **Professor:** Dr. Lina Awodogan  
 
-**4. Date:** May 7, 2025
+## 4. Date  
+May 7, 2025  
 
-**5. Abstract / Executive Summary:** The Multi-Agent Collaborative System (MACS) project aims to design, develop, and implement a Python-based system where multiple intelligent software agents collaborate to achieve complex tasks. Leveraging the `spade` (Smart Python Agent Development Environment) framework, MACS will demonstrate key concepts in distributed artificial intelligence, including inter-agent communication via XMPP, task decomposition, role-based specialization (e.g., research, editing, critique, coordination), information sharing, and potentially adaptive behaviors. The project seeks to explore the efficacy of multi-agent systems in problem-solving scenarios that benefit from distributed expertise and parallel processing.
+## 5. Abstract / Executive Summary  
+The Multi-Agent Collaborative System (MACS) project aims to design, develop, and implement a Python-based system where multiple intelligent software agents collaborate to achieve complex tasks. Leveraging the `spade` (Smart Python Agent Development Environment) framework, MACS will demonstrate key concepts in distributed artificial intelligence, including inter-agent communication via XMPP, task decomposition, role-based specialization (research, editing, critique, coordination), information sharing, and adaptive behaviors. The project will explore the efficacy of multi-agent systems in problem-solving scenarios that benefit from distributed expertise and parallel processing.
 
-**6. Introduction / Problem Statement:** Many real-world problems, particularly in information gathering, analysis, and decision-making, are too complex or multifaceted for a single monolithic system to handle efficiently. These tasks often require diverse skills, parallel processing of information, and the ability to synthesize knowledge from various sources. Traditional AI approaches might struggle with the scalability, flexibility, and robustness needed for such scenarios.
+## 6. Introduction / Problem Statement  
+Many real-world tasks—such as information gathering, analysis, and decision-making—are too complex for a single monolithic AI system. These scenarios require diverse skills, parallel information processing, and synthesis of knowledge from multiple sources. Traditional AI approaches often struggle with scalability, flexibility, and robustness.  
 
-This project addresses the challenge of creating a collaborative AI environment. The core problem is to design a system where specialized agents can effectively communicate, coordinate their actions, share information, and contribute their unique capabilities to achieve a common objective, mirroring how human expert teams operate.
+**Core problem:** How can we design a collaborative AI environment in which specialized agents communicate, coordinate, share knowledge, and contribute their unique capabilities to achieve a common objective?
 
-**7. Proposed Solution / System Architecture:** We propose the development of a Multi-Agent Collaborative System (MACS) built using Python and the `spade` framework. The system will consist of several distinct types of agents, each with specialized roles and behaviors:
+## 7. Proposed Solution / System Architecture  
+We propose to develop MACS using Python and the `spade` framework. The system will consist of four specialized agent types:
 
-* **Coordinator Agent:** Acts as the central manager or orchestrator. It will be responsible for:
-    * Receiving tasks or queries (potentially from a user or another system).
-    * Decomposing tasks and assigning sub-tasks to appropriate specialist agents.
-    * Managing the workflow and communication flow between agents.
-    * Aggregating results from different agents to produce a final output.
-    * Handling input validation and basic boundary enforcement.
-* **Researcher Agent:** Specializes in information gathering. Its responsibilities include:
-    * Receiving research requests from the Coordinator.
-    * Utilizing tools to find information (e.g., simulated web search, accessing local data stores).
-    * Processing and formatting the gathered information for other agents.
-* **Editor Agent:** Focuses on processing, refining, and structuring information. Its tasks may involve:
-    * Receiving raw data or text from the Researcher or Coordinator.
-    * Performing tasks like text summarization, organization, and reformatting using NLP techniques (e.g., with `spaCy`).
-    * Ensuring clarity and coherence of the information.
-* **Critic Agent:** Responsible for evaluating the information or work produced by other agents. Its functions include:
-    * Receiving information or drafts for review.
-    * Applying predefined criteria or heuristics to assess quality, accuracy, or relevance.
-    * Providing feedback to the originating agent or the Coordinator.
+- **Coordinator Agent**  
+  - Receives tasks or queries  
+  - Decomposes tasks and assigns sub-tasks to specialist agents  
+  - Manages workflow and message routing  
+  - Aggregates results into a final output  
+  - Validates inputs and enforces basic boundaries  
 
-**Communication:** Agents will communicate using the Extensible Messaging and Presence Protocol (XMPP), facilitated by the `spade` library. This allows for asynchronous message passing, enabling agents to send requests, share data, and provide status updates.
+- **Researcher Agent**  
+  - Handles information-gathering requests  
+  - Simulates web searches (or accesses local data)  
+  - Formats gathered data for other agents  
 
-**Data Flow (Example):**
-1.  A request enters the system via the Coordinator Agent.
-2.  The Coordinator delegates a research task to the Researcher Agent.
-3.  The Researcher Agent gathers information and sends it to the Editor Agent (or back to the Coordinator).
-4.  The Editor Agent processes the information and might send it to the Critic Agent for review.
-5.  The Critic Agent provides feedback.
-6.  Revised/finalized information is sent back to the Coordinator Agent, which compiles the final response.
+- **Editor Agent**  
+  - Refines and structures information  
+  - Performs text summarization and organization using NLP (`spaCy`)  
+  - Ensures clarity and coherence  
 
-**8. Objectives / Goals:**
-* To design and implement a functional multi-agent system using Python and `spade`.
-* To successfully implement distinct roles and behaviors for at least four types of agents (Coordinator, Researcher, Editor, Critic).
-* To establish effective inter-agent communication and coordination protocols using XMPP.
-* To demonstrate the system's ability to perform a collaborative task, such as information retrieval and summarization, based on a given query.
-* To explore basic concepts of agent memory and information sharing.
-* To incorporate conceptual elements of feedback and policy adjustment, laying groundwork for future learning capabilities.
-* To document the system architecture, agent design, and communication protocols.
+- **Critic Agent**  
+  - Evaluates outputs against quality criteria  
+  - Provides feedback and suggests improvements  
 
-**9. Scope:**
-* **In Scope:**
-    * Development of the four core agent types with defined functionalities.
-    * Implementation of message-based communication (XMPP) for task delegation, data transfer, and feedback.
-    * Basic memory implementation within agents to store relevant information for their tasks.
-    * Simulated web search for the Researcher Agent and basic NLP tasks (e.g., summarization placeholder) for the Editor Agent.
-    * A command-line or simple scripted interface for initiating tasks with the Coordinator Agent.
-* **Out of Scope (for the current term/version):**
-    * Advanced machine learning or deep learning models for agent decision-making (beyond conceptual reward/policy adjustment).
-    * A sophisticated graphical user interface (GUI).
-    * Deployment in a large-scale, production environment.
-    * Complex natural language understanding for user input beyond simple commands/queries.
-    * Real-time, high-frequency trading or control applications.
+**Communication:**  
+Agents will exchange asynchronous messages via XMPP (using `spade`), enabling requests, data sharing, and status updates.
 
-**10. Methodology / Approach:**
-The project will follow an iterative development approach:
-1.  **Phase 1: Foundation & Core Agent Development:**
-    * Set up the `spade` environment and XMPP server access.
-    * Develop the basic structure for each agent class (Coordinator, Researcher, Editor, Critic).
-    * Implement basic cyclic behaviors and message handling for each agent.
-2.  **Phase 2: Communication & Basic Task Execution:**
-    * Define and implement message formats and protocols for inter-agent communication.
-    * Implement a simple end-to-end task (e.g., Coordinator receives a query, passes it to Researcher, Researcher returns placeholder data).
-3.  **Phase 3: Enhancing Agent Capabilities:**
-    * Integrate simulated web search for the Researcher Agent.
-    * Implement placeholder NLP functionalities for the Editor Agent.
-    * Develop basic evaluation logic for the Critic Agent.
-    * Refine the Coordinator's task management and delegation logic.
-4.  **Phase 4: Integration, Testing & Refinement:**
-    * Integrate all agent functionalities.
-    * Conduct thorough testing of communication, task execution, and collaboration.
-    * Refine agent behaviors and address any identified issues.
-    * Implement basic memory and conceptual feedback mechanisms.
-5.  **Phase 5: Documentation & Finalization:**
-    * Complete project documentation, including the README, this proposal, and code comments.
-    * Prepare a final demonstration of the system.
+**Example Data Flow:**  
+1. User query → Coordinator Agent  
+2. Coordinator → Researcher Agent  
+3. Researcher → Editor Agent  
+4. Editor → Critic Agent  
+5. Critic → Coordinator  
+6. Coordinator → Final output
 
-**11. Key Features (Reiterated & Expanded):**
-* **Modular Agent Design:** Specialized agents (Coordinator, Researcher, Editor, Critic) ensure separation of concerns.
-* **XMPP-Based Communication:** Robust and asynchronous messaging for reliable inter-agent interaction.
-* **Task Delegation & Workflow Management:** Coordinated by the Coordinator Agent for efficient problem-solving.
-* **Information Processing Pipeline:** Agents collaborate to gather, refine, and evaluate information.
-    * Researcher: Web search capabilities (simulated).
-    * Editor: NLP for summarization/organization (conceptual/basic).
-* **Internal Agent Memory:** For storing task-relevant data and state.
-* **Conceptual Learning Framework:** Rudimentary feedback and reward mechanisms to guide agent behavior.
-* **Input Validation:** Basic checks for request validity by the Coordinator.
+## 8. Objectives / Goals  
+1. Implement a multi-agent system in Python with `spade`.  
+2. Define and code four agent roles (Coordinator, Researcher, Editor, Critic).  
+3. Establish reliable XMPP-based communication protocols.  
+4. Demonstrate collaborative information retrieval and summarization.  
+5. Introduce simple agent memory and feedback mechanisms.  
+6. Document architecture, design decisions, and communication protocols.
 
-**12. Technologies to be Used:**
-* **Programming Language:** Python 3
-* **Core Framework:** `spade` (Smart Python Agent Development Environment)
-* **Communication Protocol:** XMPP
-* **Supporting Libraries (Conceptual/Optional):**
-    * `spaCy`: For Natural Language Processing tasks (Editor Agent).
-    * `requests`: For web interaction (Researcher Agent).
-* **Development Environment:** Jupyter Notebook (for initial development and prototyping, as evidenced), standard Python IDEs.
-* **Version Control:** Git / GitHub.
+## 9. Scope  
+- **In Scope:**  
+  - Four core agents with cyclic behaviors and XMPP messaging  
+  - Simulated web search and placeholder NLP tasks  
+  - Command-line interface for task initiation  
+  - Basic in-agent memory for state tracking  
 
-**13. Expected Outcomes / Deliverables:**
-* A functional Python-based Multi-Agent Collaborative System.
-* Source code for all implemented agents and supporting scripts, well-commented and organized.
-* A GitHub repository containing the project code and documentation.
-* This Project Proposal document.
-* A final README.md file for the GitHub repository.
-* A demonstration of the system performing a collaborative task.
-* A final project report (if required by the course).
+- **Out of Scope:**  
+  - Advanced ML/DL for decision-making  
+  - GUI or large-scale deployment  
+  - Complex natural language parsing beyond simple commands  
+  - Real-time high-frequency control applications  
 
-**14. Potential Challenges:**
-* **XMPP Server Configuration & Management:** Ensuring reliable access to and configuration of an XMPP server.
-* **Debugging Distributed Systems:** Identifying and resolving issues in a system with multiple asynchronous components can be complex.
-* **Defining Effective Communication Protocols:** Ensuring messages are clear, concise, and correctly interpreted by all agents.
-* **Complexity Management:** As the number of agents and their interactions grow, managing system complexity will be crucial.
-* **Scope Creep:** Resisting the urge to add features beyond the defined scope within the project timeline.
-* **Integration of External Libraries:** Ensuring smooth integration and handling of dependencies like `spaCy` or `requests`.
+## 10. Methodology / Approach  
+1. **Phase 1:** Set up `spade`, develop agent classes with basic message handling.  
+2. **Phase 2:** Define message formats, implement end-to-end task flow with placeholders.  
+3. **Phase 3:** Add simulated web search, basic NLP for Editor, and evaluation logic for Critic.  
+4. **Phase 4:** Integrate all agents, conduct tests, refine behaviors, add memory/feedback.  
+5. **Phase 5:** Finalize documentation, demo, and code comments.
 
-**15. Conclusion:**
-The Multi-Agent Collaborative System (MACS) project offers a practical exploration into the field of distributed artificial intelligence. By developing a system of specialized, communicating agents, we aim to demonstrate the potential of collaborative AI in tackling complex information processing tasks. This project will provide valuable experience in agent-based design, inter-agent communication, and the `spade` framework, contributing to our understanding of deep learning and AI concepts.
+## 11. Key Features  
+- Modular agent design with separation of concerns  
+- Asynchronous XMPP messaging for robust coordination  
+- Task delegation and workflow management by the Coordinator  
+- Researcher: simulated web search capabilities  
+- Editor: placeholder NLP summarization  
+- Critic: rule-based evaluation and feedback  
+- Simple in-agent memory and reward signals  
+- Input validation at the Coordinator level  
+
+## 12. Technologies to be Used  
+- **Language:** Python 3  
+- **Agent Framework:** `spade` (XMPP-based)  
+- **NLP:** `spaCy` (Editor Agent)  
+- **HTTP Requests:** `requests` (Researcher Agent)  
+- **Development:** Jupyter Notebook & standard IDE  
+- **Version Control:** Git & GitHub  
+
+## 13. Expected Outcomes / Deliverables  
+- Fully functional Python MACS implementation  
+- Source code with clear comments and modular structure  
+- GitHub repo with README, this proposal, and agent code  
+- Demo showcasing a complete collaborative task  
+- Final project report (if required)
+
+## 14. Potential Challenges  
+- Configuring and managing an XMPP server  
+- Debugging asynchronous, distributed message flows  
+- Designing clear, unambiguous message protocols  
+- Preventing scope creep within project timeline  
+- Integrating and managing external dependencies  
+
+## 15. Conclusion  
+MACS will demonstrate the power of distributed AI by orchestrating specialized agents to solve complex tasks collaboratively. Through hands-on experience with `spade`, XMPP, and basic NLP, this project will deepen our understanding of multi-agent systems, coordination protocols, and the challenges of building robust, scalable AI architectures.
